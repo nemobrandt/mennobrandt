@@ -68,6 +68,41 @@ a { color: var(--accent); text-underline-offset: 3px; }
   .card:hover .logo { scale: 1.06; }
   .tags li:hover { background: var(--accent); color: var(--on-accent); }
 }
+
+/* ---------- Experience timeline: a vertical line with a dot beside each job ---------- */
+#experience .stack {
+  --tl-gutter: 2.5rem;   /* space for the timeline on the left */
+  --tl-x: .85rem;        /* where the line sits within that space */
+  --tl-dot-y: 3.25rem;   /* dot lines up with the middle of each logo */
+  position: relative;
+  padding-left: var(--tl-gutter);
+}
+#experience .stack::before {
+  content: ""; position: absolute;
+  left: var(--tl-x); top: var(--tl-dot-y); bottom: 1.5rem;
+  width: 2px;
+  background: linear-gradient(var(--accent) 0%, color-mix(in srgb, var(--accent) 45%, var(--line)) 35%, var(--line) 85%, transparent 100%);
+}
+#experience .job { overflow: visible; }
+#experience .job::after {
+  content: ""; position: absolute;
+  left: calc(var(--tl-x) - var(--tl-gutter) - 7px);
+  top: calc(var(--tl-dot-y) - 8px);
+  width: 16px; height: 16px; border-radius: 50%;
+  background: var(--bg);
+  border: 3px solid color-mix(in srgb, var(--accent) 70%, var(--line));
+  box-sizing: border-box;
+}
+#experience .job.current::after {
+  background: var(--accent);
+  border-color: var(--accent);
+  box-shadow: 0 0 0 5px color-mix(in srgb, var(--accent) 22%, transparent);
+}
+@media (max-width: 560px) {
+  #experience .stack { --tl-gutter: 1.75rem; --tl-x: .55rem; --tl-dot-y: 2.75rem; }
+  #experience .job::after { width: 14px; height: 14px; left: calc(var(--tl-x) - var(--tl-gutter) - 6px); top: calc(var(--tl-dot-y) - 7px); }
+}
+
 .logo { transition: scale .25s ease; }
 .tags li { transition: background .15s ease, color .15s ease; }
 
