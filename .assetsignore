@@ -1,0 +1,9 @@
+# Files in this folder that should NOT be published on the website
+.git
+.gitignore
+.assetsignore
+wrangler.jsonc
+.wrangler
+.claude
+logo-sources
+node_modules
