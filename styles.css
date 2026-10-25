@@ -12,7 +12,7 @@
   --on-accent: #fcf8f3;
   --shadow: 0 1px 2px rgba(90, 55, 25, .06), 0 4px 12px -2px rgba(90, 55, 25, .08), 0 14px 32px -12px rgba(90, 55, 25, .16);
   --shadow-hover: 0 2px 4px rgba(90, 55, 25, .07), 0 10px 22px -6px rgba(90, 55, 25, .12), 0 24px 44px -16px rgba(90, 55, 25, .22);
-  --radius: 2px;
+  --radius: 16px;
   --serif: "Fraunces", Georgia, "Times New Roman", serif;
   --sans: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
 }
@@ -35,14 +35,14 @@ body {
 
 img { max-width: 100%; }
 a { color: var(--accent); text-underline-offset: 3px; }
-:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 8px; }
 
 .wrap { width: 100%; max-width: 62rem; margin: 0 auto; padding: 0 1.25rem; }
 
-.skip { position: absolute; left: -999px; top: 0; background: var(--accent); color: var(--on-accent); padding: .5rem 1rem; z-index: 100; border-radius: 2px; }
+.skip { position: absolute; left: -999px; top: 0; background: var(--accent); color: var(--on-accent); padding: .5rem 1rem; z-index: 100; border-radius: 10px; }
 .skip:focus { left: 1rem; top: 1rem; }
 
-.icon { width: 1.25rem; height: 1.25rem; flex: none; border-radius: 2px; }
+.icon { width: 1.25rem; height: 1.25rem; flex: none; border-radius: 4px; }
 .plain { list-style: none; margin: 0; padding: 0; }
 .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 
@@ -101,13 +101,7 @@ a { color: var(--accent); text-underline-offset: 3px; }
   #experience .job::after { width: 14px; height: 14px; left: calc(var(--tl-x) - var(--tl-gutter) - 6px); top: calc(var(--tl-dot-y) - 7px); }
 }
 
-.logo { transition: filter .35s ease, opacity .35s ease; }
-/* Logos rest in soft greyscale so they sit quietly in the warm palette,
-   and come back to full colour when you hover the card (mouse devices only) */
-@media (hover: hover) {
-  .card .logo { filter: grayscale(1) contrast(.95); opacity: .78; }
-  .card:hover .logo { filter: none; opacity: 1; }
-}
+
 .tags li { transition: background .15s ease, color .15s ease; }
 
 /* ---------- Page layout: profile card on top, sections below ---------- */
@@ -135,6 +129,7 @@ a { color: var(--accent); text-underline-offset: 3px; }
     linear-gradient(160deg, #f6e8d8 0%, #eed9c1 100%);
   border: 1px solid rgba(120, 70, 35, .1);
   box-shadow: 0 1px 2px rgba(100, 55, 25, .06), 0 18px 40px -18px rgba(100, 55, 25, .25);
+  border-radius: 22px;
 }
 
 h1 {
@@ -148,7 +143,7 @@ h1 {
 .btn {
   display: inline-flex; align-items: center; justify-content: center; gap: .55rem;
   min-height: 2.75rem; padding: 0 1.3rem;
-  border: 1px solid var(--line); border-radius: 2px;
+  border: 1px solid var(--line); border-radius: 12px;
   background: var(--surface); color: var(--text);
   font-weight: 500; text-decoration: none;
   transition: transform .15s, background .15s, border-color .15s;
@@ -193,10 +188,10 @@ h3 { margin: 0; font-size: 1.05rem; font-weight: 600; line-height: 1.35; }
 
 /* ---------- Skills ---------- */
 .skill-head { display: flex; align-items: center; gap: .6rem; margin-bottom: 1rem; }
-.skill-head .dot { width: 2rem; height: 2rem; border-radius: 2px; display: grid; place-items: center; background: var(--accent-soft); color: var(--accent); font-size: 1rem; }
+.skill-head .dot { width: 2rem; height: 2rem; border-radius: 10px; display: grid; place-items: center; background: var(--accent-soft); color: var(--accent); font-size: 1rem; }
 .tags { display: flex; flex-wrap: wrap; gap: .45rem; list-style: none; margin: 0; padding: 0; }
 .tags li {
-  padding: .3rem .7rem; border-radius: 2px;
+  padding: .3rem .7rem; border-radius: 999px;
   background: var(--accent-soft); color: var(--accent);
   font-size: .85rem; font-weight: 500; line-height: 1.4;
 }
@@ -206,7 +201,7 @@ h3 { margin: 0; font-size: 1.05rem; font-weight: 600; line-height: 1.35; }
 .org { margin: .15rem 0 0; color: var(--muted); font-size: .92rem; }
 .date {
   white-space: nowrap;
-  padding: .25rem .7rem; border-radius: 2px;
+  padding: .25rem .7rem; border-radius: 999px;
   background: var(--surface-2); border: 1px solid var(--line);
   color: var(--muted); font-size: .8rem; font-weight: 500;
 }
@@ -222,14 +217,14 @@ h3 { margin: 0; font-size: 1.05rem; font-weight: 600; line-height: 1.35; }
 
 /* ---------- Job cards ---------- */
 .job { --logo: 3.5rem; position: relative; overflow: hidden; padding: 1.5rem 1.75rem; }
-.job .logo { width: var(--logo); height: var(--logo); border-radius: 2px; }
+.job .logo { width: var(--logo); height: var(--logo); border-radius: 12px; }
 .job-head { display: grid; grid-template-columns: var(--logo) minmax(0, 1fr) auto; gap: 1.1rem; align-items: start; }
 .job-title h3 { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem; font-size: 1.12rem; }
 .company { margin: .2rem 0 0; color: var(--accent); font-weight: 600; font-size: .95rem; }
 .meta { display: flex; align-items: center; gap: .35rem; margin: .3rem 0 0; color: var(--muted); font-size: .85rem; }
 .meta .icon { width: .95rem; height: .95rem; }
 .badge {
-  padding: .1rem .55rem; border-radius: 2px;
+  padding: .1rem .55rem; border-radius: 999px;
   background: #e5ead6; color: #55662f;
   font-size: .72rem; font-weight: 600; letter-spacing: .02em;
 }
@@ -244,9 +239,10 @@ h3 { margin: 0; font-size: 1.05rem; font-weight: 600; line-height: 1.35; }
 }
 
 /* Current role: accent bar down the left edge */
-.job.current::before {
-  content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 4px;
-  background: linear-gradient(var(--accent), color-mix(in srgb, var(--accent) 40%, transparent));
+/* Drawn as an inner shadow so it follows the card's rounded corners */
+.job.current { box-shadow: inset 4px 0 0 var(--accent), var(--shadow); }
+@media (hover: hover) {
+  .job.current:hover { box-shadow: inset 4px 0 0 var(--accent), var(--shadow-hover); }
 }
 
 .logo {
@@ -256,7 +252,7 @@ h3 { margin: 0; font-size: 1.05rem; font-weight: 600; line-height: 1.35; }
   object-fit: contain;
   background: #fff;
   border: 1px solid var(--line);
-  border-radius: 2px;
+  border-radius: 10px;
 }
 .logo-fill { padding: 0; } /* logos that are already a full square icon */
 
@@ -267,7 +263,7 @@ h3 { margin: 0; font-size: 1.05rem; font-weight: 600; line-height: 1.35; }
   min-width: 0;
 }
 .tile-icon {
-  width: 2.75rem; height: 2.75rem; flex: none; border-radius: 2px;
+  width: 2.75rem; height: 2.75rem; flex: none; border-radius: 12px;
   display: grid; place-items: center;
   background: var(--accent-soft); color: var(--accent);
 }
