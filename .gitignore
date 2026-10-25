@@ -1,0 +1,8 @@
+# Not part of the website
+logo-sources/
+.claude/
+
+# OS clutter
+Thumbs.db
+desktop.ini
+.DS_Store
