@@ -4,10 +4,10 @@
   --surface: #f8f1e9;     /* warm off-white cards */
   --surface-2: #f0e5d9;   /* pills inside cards */
   --text: #4a3a30;        /* warm brown */
-  --muted: #86705f;
+  --muted: #6e5849;      /* darkened to meet the 4.5:1 readability standard */
   --line: #dcc6b0;
-  --accent: #a4633a;      /* terracotta, dark enough to read as text */
-  --accent-strong: #8a502c;
+  --accent: #8f4f2b;      /* terracotta, dark enough to read as text (4.5:1+) */
+  --accent-strong: #7a4223;
   --accent-soft: #f0dbc8; /* peach tint */
   --on-accent: #fcf8f3;
   --shadow: 0 1px 2px rgba(90, 55, 25, .06), 0 4px 12px -2px rgba(90, 55, 25, .08), 0 14px 32px -12px rgba(90, 55, 25, .16);
@@ -106,7 +106,7 @@ a { color: var(--accent); text-underline-offset: 3px; }
 
 /* ---------- Page layout: profile card on top, sections below ---------- */
 .layout { width: 100%; max-width: 62rem; margin: 0 auto; padding: 1.5rem 1.25rem 0; }
-.content { min-width: 0; }
+.content { min-width: 0; padding-bottom: 4rem; }
 .content .wrap { max-width: none; padding: 0; } /* the layout already provides the side padding */
 
 /* Skills: stacked on phones and tablets, three columns on desktop */
@@ -196,6 +196,10 @@ h3 { margin: 0; font-size: 1.05rem; font-weight: 600; line-height: 1.35; }
   font-size: .85rem; font-weight: 500; line-height: 1.4;
 }
 
+/* Plain languages line under the skill cards */
+.languages { margin: 1.25rem 0 0; color: var(--muted); font-size: .95rem; }
+.languages strong { color: var(--text); font-weight: 600; }
+
 /* ---------- Entry cards (experience / education) ---------- */
 .entry-head { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: start; gap: 1rem; }
 .org { margin: .15rem 0 0; color: var(--muted); font-size: .92rem; }
@@ -270,9 +274,12 @@ h3 { margin: 0; font-size: 1.05rem; font-weight: 600; line-height: 1.35; }
 .tile-icon .icon { width: 1.35rem; height: 1.35rem; }
 .tile-label { display: block; font-size: .8rem; color: var(--muted); }
 .tile-value { display: block; font-weight: 500; overflow-wrap: anywhere; }
+/* Contact cards press in slightly when tapped or clicked */
+a.contact-tile:active { translate: 0 1px; box-shadow: var(--shadow); transition-duration: .08s; }
+.contact-location { margin: 1.25rem 0 0; color: var(--text); font-weight: 500; }
+.contact-location + .contact-note { margin-top: .35rem; }
 .contact-note { margin: 1rem 0 0; color: var(--muted); font-size: .92rem; }
 
-.site-footer { padding: 3rem 0 2.5rem; color: var(--muted); font-size: .88rem; text-align: center; }
 
 /* ---------- Scroll reveal (only when JS is on and motion is allowed) ---------- */
 @media (prefers-reduced-motion: no-preference) {

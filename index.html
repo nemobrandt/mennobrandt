@@ -93,8 +93,8 @@
           { "@type": "CollegeOrUniversity", "name": "University of Adelaide", "url": "https://www.adelaide.edu.au/" },
           { "@type": "HighSchool", "name": "University Senior College" }
         ],
-        "knowsAbout": ["Finance", "Business Analytics", "Cyber Security", "Software Development", "Web Development", "AI Tools", "Community Engagement", "Public Policy"],
-        "knowsLanguage": ["English", "Afrikaans"],
+        "knowsAbout": ["Python", "R", "Excel", "Adobe Photoshop", "Adobe Premiere Pro", "Statistics", "Data Analysis", "Data Visualisation", "Policy Research", "Finance", "Business Analytics", "Cyber Security", "Software Development", "Web Development", "AI Tools", "Community Engagement", "Public Policy"],
+        "knowsLanguage": ["English", "Afrikaans", "Dutch", "German"],
         "sameAs": [
           "https://www.linkedin.com/in/menno-brandt/"
         ]
@@ -317,43 +317,42 @@
             <div class="skill-head"><span class="dot"><svg class="icon" aria-hidden="true"><use href="#i-people"/></svg></span><h3>People &amp; communication</h3></div>
             <ul class="tags">
               <li>Community engagement</li>
-              <li>Talking with the public</li>
-              <li>Phone &amp; face-to-face outreach</li>
-              <li>Strong verbal communication</li>
-              <li>Teaching &amp; explaining</li>
+              <li>Phone outreach</li>
+              <li>Face-to-face outreach</li>
+              <li>Customer service</li>
             </ul>
           </div>
           <div class="card reveal">
             <div class="skill-head"><span class="dot"><svg class="icon" aria-hidden="true"><use href="#i-code"/></svg></span><h3>Technical</h3></div>
             <ul class="tags">
-              <li>Highly tech-literate</li>
-              <li>AI tools</li>
-              <li>Software development</li>
+              <li>Excel</li>
+              <li>R</li>
+              <li>Python</li>
+              <li>AI automation</li>
               <li>Web development</li>
-              <li>Task automation</li>
-              <li>Cyber security fundamentals</li>
-              <li>IT support</li>
+              <li>Adobe Photoshop</li>
+              <li>Adobe Premiere Pro</li>
             </ul>
           </div>
           <div class="card reveal">
-            <div class="skill-head"><span class="dot"><svg class="icon" aria-hidden="true"><use href="#i-chart"/></svg></span><h3>Analytical &amp; personal</h3></div>
+            <div class="skill-head"><span class="dot"><svg class="icon" aria-hidden="true"><use href="#i-chart"/></svg></span><h3>Research &amp; analysis</h3></div>
             <ul class="tags">
-              <li>Numerical reasoning</li>
-              <li>Business data analysis</li>
-              <li>Quick learner</li>
-              <li>Friendly &amp; approachable</li>
-              <li>English</li>
-              <li>Afrikaans</li>
+              <li>Statistics</li>
+              <li>Data analysis</li>
+              <li>Data visualisation</li>
+              <li>Policy research</li>
+              <li>Report writing</li>
             </ul>
           </div>
         </div>
+        <p class="languages"><strong>Languages:</strong> English and Afrikaans; reading knowledge of Dutch and German</p>
       </div>
     </section>
 
     <section id="contact" class="section">
       <div class="wrap">
         <div class="section-head"><h2>Contact</h2><span class="sec-rule" aria-hidden="true"></span></div>
-        <div class="cols-3">
+        <div class="cols-2">
           <a class="card contact-tile reveal" href="mailto:brandt.menno@gmail.com">
             <span class="tile-icon"><svg class="icon" aria-hidden="true"><use href="#i-mail"/></svg></span>
             <span><span class="tile-label">Email</span><span class="tile-value">brandt.menno@gmail.com</span></span>
@@ -362,25 +361,16 @@
             <span class="tile-icon"><img class="icon" src="icons/linkedin.webp" alt="" width="20" height="20" loading="lazy"></span>
             <span><span class="tile-label">LinkedIn</span><span class="tile-value">in/menno-brandt</span></span>
           </a>
-          <div class="card contact-tile reveal">
-            <span class="tile-icon"><svg class="icon" aria-hidden="true"><use href="#i-pin"/></svg></span>
-            <span><span class="tile-label">Location</span><span class="tile-value">Melbourne, Victoria</span></span>
-          </div>
         </div>
+        <p class="contact-location">Based in Melbourne, Victoria</p>
         <p class="contact-note">The best way to reach me is by email or LinkedIn. References are available on request.</p>
       </div>
     </section>
   </main>
-
-  <footer class="site-footer">
-    <div class="wrap">© <span id="year">2026</span> Menno Brandt</div>
-  </footer>
     </div>
   </div>
 
   <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-
     // Fade cards in as they scroll into view. Without JS, or with reduced motion, everything just shows.
     (function () {
       var items = document.querySelectorAll('.reveal');
@@ -389,6 +379,7 @@
         entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
       }, { rootMargin: '0px 0px -8% 0px' });
       items.forEach(function (el) { io.observe(el); });
-    })();  </script>
+    })();
+  </script>
 </body>
 </html>
