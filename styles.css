@@ -171,7 +171,7 @@ a { color: var(--accent); text-underline-offset: 3px; }
     linear-gradient(160deg, #f6e8d8 0%, #eed9c1 100%);
   border: 1px solid var(--card-line);
   box-shadow: 0 1px 2px rgba(100, 55, 25, .08), 0 6px 16px -6px rgba(100, 55, 25, .12), 0 22px 44px -18px rgba(100, 55, 25, .28);
-  border-radius: 8px;
+  border-radius: 2px;
 }
 
 h1 {
