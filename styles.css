@@ -13,7 +13,7 @@
   --on-accent: #fcf8f3;
   --shadow: 0 1px 2px rgba(90, 55, 25, .09), 0 4px 12px -2px rgba(90, 55, 25, .10), 0 14px 32px -12px rgba(90, 55, 25, .19);
   --shadow-hover: 0 2px 4px rgba(90, 55, 25, .07), 0 10px 22px -6px rgba(90, 55, 25, .12), 0 24px 44px -16px rgba(90, 55, 25, .22);
-  --radius: 8px;
+  --radius: 6px;
   --serif: "Fraunces", Georgia, "Times New Roman", serif;
   --sans: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
 }
@@ -47,7 +47,7 @@ body::after {
 }
 /* Dot grid, fading out towards the edges of the screen */
 body::before {
-  background-image: radial-gradient(rgba(120, 80, 45, .22) 1.2px, transparent 1.7px);
+  background-image: radial-gradient(rgba(120, 80, 45, .14) 1.2px, transparent 1.7px);
   background-size: 22px 22px;
   background-position: center top;
   -webkit-mask-image: radial-gradient(ellipse 85% 75% at 50% 35%, #000 25%, transparent 80%);
@@ -56,11 +56,11 @@ body::before {
 /* Large soft circles and two thin rings in warm peach / caramel */
 body::after {
   background:
-    radial-gradient(circle at 88% 12%, rgba(214, 140, 85, .22) 0, transparent 26rem),
-    radial-gradient(circle at 6% 72%, rgba(232, 180, 130, .26) 0, transparent 24rem),
-    radial-gradient(circle at 70% 96%, rgba(196, 130, 80, .14) 0, transparent 20rem),
-    radial-gradient(circle at 92% 14%, transparent 0 13.4rem, rgba(143, 79, 43, .065) 13.5rem 13.6rem, transparent 13.7rem),
-    radial-gradient(circle at 4% 76%, transparent 0 9.4rem, rgba(143, 79, 43, .055) 9.5rem 9.6rem, transparent 9.7rem);
+    radial-gradient(circle at 88% 12%, rgba(214, 140, 85, .15) 0, transparent 26rem),
+    radial-gradient(circle at 6% 72%, rgba(232, 180, 130, .18) 0, transparent 24rem),
+    radial-gradient(circle at 70% 96%, rgba(196, 130, 80, .10) 0, transparent 20rem),
+    radial-gradient(circle at 92% 14%, transparent 0 13.4rem, rgba(143, 79, 43, .04) 13.5rem 13.6rem, transparent 13.7rem),
+    radial-gradient(circle at 4% 76%, transparent 0 9.4rem, rgba(143, 79, 43, .035) 9.5rem 9.6rem, transparent 9.7rem);
 }
 
 img { max-width: 100%; }
@@ -79,11 +79,14 @@ a { color: var(--accent); text-underline-offset: 3px; }
 /* ---------- Cards ---------- */
 .card {
   background-color: var(--surface);
-  /* Subtle light falling from the top-left: a soft glow in that corner
-     and a faint shade in the opposite one */
+  /* Subtle light falling from the top-left, a faint peach glow in the
+     top-right, a faint shade in the bottom-right, all over a gentle
+     top-to-bottom warm gradient */
   background-image:
-    radial-gradient(120% 90% at 0% 0%, rgba(255, 255, 255, .6) 0%, transparent 42%),
-    radial-gradient(110% 90% at 100% 100%, rgba(120, 80, 45, .07) 0%, transparent 48%);
+    radial-gradient(120% 90% at 0% 0%, rgba(255, 255, 255, .65) 0%, transparent 42%),
+    radial-gradient(70% 80% at 100% 0%, rgba(236, 196, 160, .12) 0%, transparent 60%),
+    radial-gradient(110% 90% at 100% 100%, rgba(120, 80, 45, .07) 0%, transparent 48%),
+    linear-gradient(175deg, #f9f3ec 0%, #f6eee5 100%);
   border: 1px solid var(--card-line);
   border-radius: var(--radius);
   box-shadow: var(--shadow);
@@ -160,11 +163,15 @@ a { color: var(--accent); text-underline-offset: 3px; }
   display: flex; flex-direction: column; gap: 1.5rem;
   padding: 2rem;
   color: var(--hero-text);
+  /* Same light-from-the-top-left as the other cards, plus a soft glow
+     behind the photo so it sits in the card rather than floating on it */
   background:
+    radial-gradient(120% 90% at 0% 0%, rgba(255, 255, 255, .55) 0%, transparent 45%),
+    radial-gradient(circle at 84% 50%, rgba(255, 248, 238, .7) 0%, transparent 32%),
     linear-gradient(160deg, #f6e8d8 0%, #eed9c1 100%);
-  border: 1px solid rgba(120, 70, 35, .1);
-  box-shadow: 0 1px 2px rgba(100, 55, 25, .06), 0 18px 40px -18px rgba(100, 55, 25, .25);
-  border-radius: 10px;
+  border: 1px solid var(--card-line);
+  box-shadow: 0 1px 2px rgba(100, 55, 25, .08), 0 6px 16px -6px rgba(100, 55, 25, .12), 0 22px 44px -18px rgba(100, 55, 25, .28);
+  border-radius: 8px;
 }
 
 h1 {
@@ -172,13 +179,13 @@ h1 {
   font: 600 clamp(2.6rem, 6vw, 4.75rem)/1 var(--serif);
   letter-spacing: -.025em;
 }
-.lede { max-width: 34rem; margin: 1.1rem 0 1.85rem; font-size: clamp(1.05rem, 2vw, 1.2rem); line-height: 1.6; color: var(--hero-muted); }
+.lede { max-width: 34rem; margin: 1rem 0 1.75rem; font-size: clamp(1.05rem, 2vw, 1.2rem); line-height: 1.6; color: var(--hero-muted); text-wrap: pretty; }
 
 .actions { display: flex; flex-wrap: wrap; gap: .65rem; }
 .btn {
   display: inline-flex; align-items: center; justify-content: center; gap: .55rem;
   min-height: 2.75rem; padding: 0 1.3rem;
-  border: 1px solid var(--line); border-radius: 7px;
+  border: 1px solid var(--line); border-radius: 5px;
   background: var(--surface); color: var(--text);
   font-weight: 500; text-decoration: none;
   transition: transform .15s, background .15s, border-color .15s;
@@ -195,13 +202,15 @@ h1 {
   width: 8rem; aspect-ratio: 1;
   border-radius: 50%; overflow: hidden;
   background: #e9e9ec;
-  box-shadow: 0 0 0 6px rgba(252, 248, 243, .9), 0 18px 36px -16px rgba(90, 50, 25, .4);
+  /* Warm cream frame with a thin outline, matching the cards */
+  box-shadow: 0 0 0 5px #fbf5ee, 0 0 0 6px var(--card-line), 0 18px 36px -16px rgba(90, 50, 25, .4);
 }
-.avatar img { position: absolute; height: 160%; width: auto; max-width: none; left: -67%; top: -14%; }
+/* A touch of warmth so the photo's cool grey backdrop suits the palette */
+.avatar img { position: absolute; height: 160%; width: auto; max-width: none; left: -67%; top: -14%; filter: sepia(.12) saturate(1.05); }
 
 /* Tablet and up: text on the left, photo on the right */
 @media (min-width: 640px) {
-  .hero-card { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 3rem; padding: 4rem 3.5rem; }
+  .hero-card { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 2.5rem; padding: clamp(2.5rem, 5vw, 3.5rem) clamp(2rem, 5vw, 3.5rem); }
   .hero-card .avatar { order: 2; width: clamp(10rem, 21vw, 15rem); }
 }
 
@@ -223,7 +232,7 @@ h3 { margin: 0; font-size: 1.05rem; font-weight: 600; line-height: 1.35; }
 
 /* ---------- Skills ---------- */
 .skill-head { display: flex; align-items: center; gap: .6rem; margin-bottom: 1rem; }
-.skill-head .dot { width: 2rem; height: 2rem; border-radius: 6px; display: grid; place-items: center; background: var(--accent-soft); color: var(--accent); font-size: 1rem; }
+.skill-head .dot { width: 2rem; height: 2rem; border-radius: 5px; display: grid; place-items: center; background: var(--accent-soft); color: var(--accent); font-size: 1rem; }
 .tags { display: flex; flex-wrap: wrap; gap: .45rem; list-style: none; margin: 0; padding: 0; }
 .tags li {
   padding: .3rem .7rem; border-radius: 999px;
@@ -256,7 +265,7 @@ h3 { margin: 0; font-size: 1.05rem; font-weight: 600; line-height: 1.35; }
 
 /* ---------- Job cards ---------- */
 .job { --logo: 3.5rem; position: relative; overflow: hidden; padding: 1.5rem 1.75rem; }
-.job .logo { width: var(--logo); height: var(--logo); border-radius: 7px; }
+.job .logo { width: var(--logo); height: var(--logo); border-radius: 5px; }
 .job-head { display: grid; grid-template-columns: var(--logo) minmax(0, 1fr) auto; gap: 1.1rem; align-items: start; }
 .job-title h3 { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem; font-size: 1.12rem; }
 .company { margin: .2rem 0 0; color: var(--accent); font-weight: 600; font-size: .95rem; }
@@ -291,7 +300,7 @@ h3 { margin: 0; font-size: 1.05rem; font-weight: 600; line-height: 1.35; }
   object-fit: contain;
   background: #fff;
   border: 1px solid var(--line);
-  border-radius: 6px;
+  border-radius: 5px;
 }
 .logo-fill { padding: 0; } /* logos that are already a full square icon */
 
@@ -302,7 +311,7 @@ h3 { margin: 0; font-size: 1.05rem; font-weight: 600; line-height: 1.35; }
   min-width: 0;
 }
 .tile-icon {
-  width: 2.75rem; height: 2.75rem; flex: none; border-radius: 7px;
+  width: 2.75rem; height: 2.75rem; flex: none; border-radius: 5px;
   display: grid; place-items: center;
   background: var(--accent-soft); color: var(--accent);
 }
