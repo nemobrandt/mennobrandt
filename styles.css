@@ -3,14 +3,15 @@
   --bg: #e7d9ca;          /* cream page */
   --surface: #f8f1e9;     /* warm off-white cards */
   --surface-2: #f0e5d9;   /* pills inside cards */
-  --text: #4a3a30;        /* warm brown */
-  --muted: #6e5849;      /* darkened to meet the 4.5:1 readability standard */
+  --text: #3b2c23;        /* warm dark brown */
+  --muted: #5a4537;       /* secondary text, still clearly darker than before */
   --line: #dcc6b0;
+  --card-line: #cbb299;   /* slightly stronger outline so cards stand out */
   --accent: #8f4f2b;      /* terracotta, dark enough to read as text (4.5:1+) */
   --accent-strong: #7a4223;
   --accent-soft: #f0dbc8; /* peach tint */
   --on-accent: #fcf8f3;
-  --shadow: 0 1px 2px rgba(90, 55, 25, .06), 0 4px 12px -2px rgba(90, 55, 25, .08), 0 14px 32px -12px rgba(90, 55, 25, .16);
+  --shadow: 0 1px 2px rgba(90, 55, 25, .09), 0 4px 12px -2px rgba(90, 55, 25, .10), 0 14px 32px -12px rgba(90, 55, 25, .19);
   --shadow-hover: 0 2px 4px rgba(90, 55, 25, .07), 0 10px 22px -6px rgba(90, 55, 25, .12), 0 24px 44px -16px rgba(90, 55, 25, .22);
   --radius: 8px;
   --serif: "Fraunces", Georgia, "Times New Roman", serif;
@@ -33,6 +34,35 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+/* ---------- Decorative background: dot grid + soft circles ----------
+   Both layers sit fixed behind everything, so cards cover them and they
+   only show in the gaps. Kept very low-contrast so text stays easy to read. */
+body::before,
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+}
+/* Dot grid, fading out towards the edges of the screen */
+body::before {
+  background-image: radial-gradient(rgba(120, 80, 45, .22) 1.2px, transparent 1.7px);
+  background-size: 22px 22px;
+  background-position: center top;
+  -webkit-mask-image: radial-gradient(ellipse 85% 75% at 50% 35%, #000 25%, transparent 80%);
+          mask-image: radial-gradient(ellipse 85% 75% at 50% 35%, #000 25%, transparent 80%);
+}
+/* Large soft circles and two thin rings in warm peach / caramel */
+body::after {
+  background:
+    radial-gradient(circle at 88% 12%, rgba(214, 140, 85, .22) 0, transparent 26rem),
+    radial-gradient(circle at 6% 72%, rgba(232, 180, 130, .26) 0, transparent 24rem),
+    radial-gradient(circle at 70% 96%, rgba(196, 130, 80, .14) 0, transparent 20rem),
+    radial-gradient(circle at 92% 14%, transparent 0 13.4rem, rgba(143, 79, 43, .065) 13.5rem 13.6rem, transparent 13.7rem),
+    radial-gradient(circle at 4% 76%, transparent 0 9.4rem, rgba(143, 79, 43, .055) 9.5rem 9.6rem, transparent 9.7rem);
+}
+
 img { max-width: 100%; }
 a { color: var(--accent); text-underline-offset: 3px; }
 :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 8px; }
@@ -48,8 +78,13 @@ a { color: var(--accent); text-underline-offset: 3px; }
 
 /* ---------- Cards ---------- */
 .card {
-  background: var(--surface);
-  border: 1px solid var(--line);
+  background-color: var(--surface);
+  /* Subtle light falling from the top-left: a soft glow in that corner
+     and a faint shade in the opposite one */
+  background-image:
+    radial-gradient(120% 90% at 0% 0%, rgba(255, 255, 255, .6) 0%, transparent 42%),
+    radial-gradient(110% 90% at 100% 100%, rgba(120, 80, 45, .07) 0%, transparent 48%);
+  border: 1px solid var(--card-line);
   border-radius: var(--radius);
   box-shadow: var(--shadow);
   padding: 1.5rem;
@@ -62,7 +97,7 @@ a { color: var(--accent); text-underline-offset: 3px; }
     position: relative; z-index: 2;
     translate: 0 -3px;
     box-shadow: var(--shadow-hover);
-    border-color: color-mix(in srgb, var(--accent) 25%, var(--line));
+    border-color: color-mix(in srgb, var(--accent) 30%, var(--card-line));
   }
   .tags li:hover { background: var(--accent); color: var(--on-accent); }
 }
@@ -316,6 +351,7 @@ a.contact-tile:active { translate: 0 1px; box-shadow: var(--shadow); transition-
 }
 
 @media print {
+  body::before, body::after { display: none; }
   body { background: #fff; }
   .actions, .skip { display: none; }
   .layout { display: block; }
