@@ -215,7 +215,27 @@ h1 {
 }
 
 /* ---------- Sections ---------- */
-.section { padding: 4rem 0 0; }
+.section { padding: 4rem 0 0; scroll-margin-top: -2.5rem; } /* jumping to a section lands with its heading near the top */
+
+/* Floating "next section" arrow, bottom-right. Hidden at the top of the page,
+   fades in once you start scrolling; points up at the end of the page. */
+.next-sec {
+  position: fixed; right: 1.25rem; bottom: 1.25rem; z-index: 20;
+  display: flex; align-items: center; justify-content: center;
+  width: 2.75rem; height: 2.75rem; padding: 0;
+  border: 1px solid var(--card-line); border-radius: 50%;
+  background: var(--surface); color: var(--accent);
+  box-shadow: 0 2px 4px rgba(90, 55, 25, .1), 0 8px 20px -6px rgba(90, 55, 25, .28);
+  cursor: pointer;
+  opacity: 0; visibility: hidden; transform: translateY(8px);
+  transition: opacity .25s ease, transform .25s ease, visibility .25s, background .2s ease, color .2s ease, border-color .2s ease;
+}
+.next-sec.show { opacity: 1; visibility: visible; transform: none; }
+.next-sec .icon { width: 1.2rem; height: 1.2rem; transition: rotate .25s ease; }
+.next-sec.up .icon { rotate: 180deg; }
+@media (hover: hover) {
+  .next-sec:hover { background: var(--accent); border-color: var(--accent); color: var(--on-accent); }
+}
 
 /* Section header: heading with a thin rule running to the edge */
 .section-head { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem; }
@@ -362,7 +382,7 @@ a.contact-tile:active { translate: 0 1px; box-shadow: var(--shadow); transition-
 @media print {
   body::before, body::after { display: none; }
   body { background: #fff; }
-  .actions, .skip { display: none; }
+  .actions, .skip, .next-sec { display: none; }
   .layout { display: block; }
   .hero-card { color: #000; background: none; box-shadow: none; }
   .card { box-shadow: none; break-inside: avoid; }
