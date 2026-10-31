@@ -12,7 +12,6 @@
   --accent-soft: #f0dbc8; /* peach tint */
   --on-accent: #fcf8f3;
   --shadow: 0 1px 2px rgba(90, 55, 25, .09), 0 4px 12px -2px rgba(90, 55, 25, .10), 0 14px 32px -12px rgba(90, 55, 25, .19);
-  --shadow-hover: 0 2px 4px rgba(90, 55, 25, .07), 0 10px 22px -6px rgba(90, 55, 25, .12), 0 24px 44px -16px rgba(90, 55, 25, .22);
   --radius: 6px;
   --serif: "Fraunces", Georgia, "Times New Roman", serif;
   --sans: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
@@ -83,18 +82,6 @@ a { color: var(--accent); text-underline-offset: 3px; }
   border-radius: var(--radius);
   box-shadow: var(--shadow);
   padding: 1.5rem;
-  transition: translate .25s ease, box-shadow .25s ease, border-color .25s ease;
-}
-
-/* Hover: cards lift gently and the shadow softens out. Only on devices with a mouse. */
-@media (hover: hover) {
-  .card:not(.hero-card):hover {
-    position: relative; z-index: 2;
-    translate: 0 -3px;
-    box-shadow: var(--shadow-hover);
-    border-color: color-mix(in srgb, var(--accent) 30%, var(--card-line));
-  }
-  .tags li:hover { background: var(--accent); color: var(--on-accent); }
 }
 
 /* ---------- Experience timeline: a vertical line with a dot beside each job ---------- */
@@ -132,7 +119,6 @@ a { color: var(--accent); text-underline-offset: 3px; }
 }
 
 
-.tags li { transition: background .15s ease, color .15s ease; }
 
 /* ---------- Page layout: profile card on top, sections below ---------- */
 .layout { width: 100%; max-width: 62rem; margin: 0 auto; padding: 1.5rem 1.25rem 0; }
@@ -301,9 +287,6 @@ h3 { margin: 0; font-size: 1.05rem; font-weight: 600; line-height: 1.35; }
 /* Current role: accent bar down the left edge */
 /* Drawn as an inner shadow so it follows the card's rounded corners */
 .job.current { box-shadow: inset 4px 0 0 var(--accent), var(--shadow); }
-@media (hover: hover) {
-  .job.current:hover { box-shadow: inset 4px 0 0 var(--accent), var(--shadow-hover); }
-}
 
 .logo {
   display: block;
@@ -358,7 +341,7 @@ a.contact-tile:active { translate: 0 1px; box-shadow: var(--shadow); transition-
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .btn, .card, .logo, .tags li { transition: none; }
-  .card:not(.hero-card):hover, .btn:hover { translate: none; transform: none; }
+  .btn:hover { transform: none; }
 }
 
 @media print {
